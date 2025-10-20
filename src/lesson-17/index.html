@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+  <script type="module" crossorigin src="/PortfolioForFE4/assets/lesson17-qnGbr8yD.js"></script>
+  <link rel="modulepreload" crossorigin href="/PortfolioForFE4/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="stylesheet" crossorigin href="/PortfolioForFE4/assets/lesson17-DVkYqeWS.css">
+</head>
+<body>
+<h1 class="title-lesson">Урок-17(41-1)_JS.“Пагінація. Pixabay API. Resource Lists/Pagination”</h1>
+
+    <div class="settings-box">
+        <div class="input-box">
+            <label>
+                Введіть число элементів (N) на сторінці (від 1 до 20):
+                <input
+                    id="per-page"
+                    type="number" 
+                    min="1" max="20" 
+                    value="5"
+                >
+            </label>
+            <label>
+                Введіть кількість елементів після якого показуємо наступні N элементів (<b>offset</b>) (від 0 до 366):
+                <input 
+                id="element-after-which" 
+                type="number" 
+                min="0" max="366" 
+                value="10">
+            </label>
+        </div>
+        <button type="button" class="fetch-btn">
+            Fetch elements
+        </button>
+    </div>
+
+    <p class="number-elements-info">Кількість елементів у колекції: <span class="number-elements">*</p>
+    <p class="elements-info">Сторінка № <span class="page">*</span> з <span class="number-of-pages">*</span></p>
+    <ul class="elements-list">elements...</ul>
+
+
+    <div class="pagination-arrow-buttons">
+        <button type="button" id="prev">
+            ⇐ Prev
+        </button>
+        <button type="button" id="next">
+            Next ⇒
+        </button>
+    </div>
+
+</body>
+</html>
