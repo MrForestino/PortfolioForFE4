@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <title>Пагінація з попереднім завантаженням сторінок</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Handlebars з CDN -->
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
-
-  <script type="module" crossorigin src="/PortfolioForFE4/assets/lesson18-ChPiZdMW.js"></script>
+  <script type="module" crossorigin src="/PortfolioForFE4/assets/lesson18-Bk9KBcKX.js"></script>
   <link rel="modulepreload" crossorigin href="/PortfolioForFE4/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="stylesheet" crossorigin href="/PortfolioForFE4/assets/lesson18-B1JPCoLX.css">
 </head>
@@ -25,12 +22,18 @@
       <input id="per-page" type="number" min="1" value="5" />
     </label>
 
-    <label>
+    <!-- <label>
       Завантажити сторінок:
       <input id="pages-to-load" type="number" min="1" value="2" />
-    </label>
+    </label> -->
 
     <button id="fetch" class="btn primary">Завантажити</button>
+
+    <label>
+      Перейти на сторінку:
+      <input id="go-to-page" type="number" min="1" value="1" />
+    </label>
+    <button id="go-to-page-btn" class="btn">Перейти</button>
   </div>
 
   <div class="posts-info">
@@ -43,6 +46,7 @@
 
   <div class="pager">
     <button id="prev" class="btn ghost" disabled>← Попередня</button>
+    <button id="add-open" class="btn">Додати пост</button>
     <button id="next" class="btn ghost" disabled>Наступна →</button>
   </div>
 
@@ -50,80 +54,16 @@
     <button id="load-more" class="btn">Завантажити ще</button>
   </div>
 
-  <!-- Шаблон Handlebars для одного елемента -->
   <script id="item-template" type="text/x-handlebars-template">
     {{#each items}}
       <li data-id="{{id}}">
-        <img src="{{webformatURL}}" alt="{{tags}}" />
-        <p>{{#if tags}}{{else}}Без опису{{/if}}</p>
+        <img src="{{previewURL}}" alt="{{tags}}" />
+        <p>{{#if tags}}{{tags}}{{else}}Без опису{{/if}}</p>
         <p>Автор: {{user}}</p>
         <p class="soft"><small>ID: {{id}}</small></p>
-
-        <div class="buttons">
-          {{#if pageURL}}
-            <a href="{{pageURL}}" class="btn" target="_blank" rel="noopener">Переглянути</a>
-          {{/if}}
-          <button class="btn btn-update">✏️ Оновити</button>
-          <button class="btn warn btn-delete">🗑️ Видалити</button>
-          <button class="btn btn-comment">💬 Коментар</button>
-        </div>
-
-        {{#if comments}}
-          <div class="soft" style="margin-top:8px">
-            <strong>Коментарі ({{comments.length}}):</strong>
-            <ul style="margin:6px 0 0 16px">
-              {{#each comments}}
-                <li><strong>{{nick}}:</strong> {{text}}</li>
-              {{/each}}
-            </ul>
-          </div>
-        {{/if}}
       </li>
     {{/each}}
   </script>
-
-  <!-- Модалка: Update -->
-  <div id="modal-update" class="modal hidden" data-type="update">
-    <div class="content">
-      <h3>Оновити елемент</h3>
-      <div class="row">
-        <input id="update-tags" placeholder="Опис / теги" />
-      </div>
-      <div class="actions">
-        <button class="btn ghost close-modal">Скасувати</button>
-        <button id="update-save" class="btn primary">Зберегти</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Модалка: Delete -->
-  <div id="modal-delete" class="modal hidden" data-type="delete">
-    <div class="content">
-      <h3>Видалити елемент?</h3>
-      <p class="soft">Цю дію не можна буде скасувати.</p>
-      <div class="actions">
-        <button class="btn ghost close-modal">Скасувати</button>
-        <button id="delete-confirm" class="btn warn">Видалити</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Модалка: Comment -->
-  <div id="modal-comment" class="modal hidden" data-type="comment">
-    <div class="content">
-      <h3>Додати коментар</h3>
-      <div class="row">
-        <input id="comment-user" placeholder="Ваш нік" />
-      </div>
-      <div class="row">
-        <textarea id="comment-text" placeholder="Ваш коментар"></textarea>
-      </div>
-      <div class="actions">
-        <button class="btn ghost close-modal">Скасувати</button>
-        <button id="comment-save" class="btn primary">Додати</button>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
